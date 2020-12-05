@@ -1,6 +1,5 @@
 package io.woolford.neo4j.web;
 
-import io.woolford.neo4j.entity.NetworkUserId;
 import io.woolford.neo4j.entity.PageUrl;
 import io.woolford.neo4j.repository.RecommendationsRepository;
 import org.slf4j.Logger;

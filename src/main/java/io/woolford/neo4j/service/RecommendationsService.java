@@ -1,6 +1,5 @@
 package io.woolford.neo4j.service;
 
-
 import io.woolford.neo4j.entity.PageUrl;
 import io.woolford.neo4j.repository.RecommendationsRepository;
 import org.springframework.stereotype.Service;
