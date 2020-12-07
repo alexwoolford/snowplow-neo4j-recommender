@@ -10,27 +10,11 @@ public class NetworkUserId {
 
     //TODO: possibly an unnecessary class
 
-    @Id @GeneratedValue
-    private Long id;
-
     @Property("network_userid")
     private String networkUserId;
 
     public NetworkUserId(String networkUserId) {
-        this(null, networkUserId);
-    }
-
-    public NetworkUserId(Long id, String networkUserId){
-        this.id = id;
         this.networkUserId = networkUserId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNetworkUserId() {
