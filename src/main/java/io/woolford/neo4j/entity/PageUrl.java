@@ -2,8 +2,6 @@ package io.woolford.neo4j.entity;
 
 import org.neo4j.ogm.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 @NodeEntity
 public class PageUrl {
@@ -22,8 +20,5 @@ public class PageUrl {
     public void setPageUrl(String pageUrl) {
         this.pageUrl = pageUrl;
     }
-
-    @Relationship(type="VIEWED", direction=Relationship.INCOMING)
-    private Collection<NetworkUserId> networkUserIds = new ArrayList<>();
 
 }

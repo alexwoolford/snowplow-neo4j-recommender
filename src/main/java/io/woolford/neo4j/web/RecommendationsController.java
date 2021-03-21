@@ -25,10 +25,6 @@ public class RecommendationsController {
 
         LOG.info("network_userid: " + network_userid);
 
-//        NetworkUserId networkUserId = new NetworkUserId();
-//        networkUserId.setId(network_userid);
-//        networkUserId.setNetworkUserId(network_userid);
-
         return ResponseEntity.ok(recommendationsRepository.getRecommendations(network_userid));
     }
 
