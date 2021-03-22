@@ -1,6 +1,6 @@
 package io.woolford.neo4j.web;
 
-import io.woolford.neo4j.entity.PageUrl;
+import io.woolford.neo4j.entity.Page;
 import io.woolford.neo4j.repository.RecommendationsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class RecommendationsController {
     }
 
     @GetMapping("/recommendations/{network_userid}")
-    public ResponseEntity<List<PageUrl>> getRecommendations(@PathVariable String network_userid) {
+    public ResponseEntity<List<Page>> getRecommendations(@PathVariable String network_userid) {
 
         LOG.info("network_userid: " + network_userid);
 

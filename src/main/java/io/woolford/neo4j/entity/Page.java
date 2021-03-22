@@ -1,16 +1,23 @@
 package io.woolford.neo4j.entity;
 
-import org.neo4j.ogm.annotation.*;
+import org.springframework.data.neo4j.core.schema.*;
 
+@Node("Page")
+public class Page {
 
-@NodeEntity
-public class PageUrl {
+    @Id
+    @GeneratedValue
+    private Long id;
 
     @Property("page_url")
     private String pageUrl;
 
-    public PageUrl(String pageUrl) {
-        this.pageUrl = pageUrl;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPageUrl() {

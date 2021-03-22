@@ -1,23 +1,24 @@
 package io.woolford.neo4j.repository;
 
-import io.woolford.neo4j.entity.PageUrl;
-import org.springframework.data.neo4j.annotation.Query;
+import io.woolford.neo4j.entity.Page;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
+import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+public interface RecommendationsRepository extends Neo4jRepository<Page, Long> {
 
-public interface RecommendationsRepository extends Neo4jRepository<List<PageUrl>, Long> {
-
-    @Query( "MATCH (user:network_userid {id: $network_userid})-[:VIEWED]->(page:page_url)<-[:VIEWED]-(other_user:network_userid)-[:VIEWED]->(other_page:page_url) " +
+    @Query( "MATCH (user:User {network_userid: $network_userid})-[:VIEWED]->(page:Page)<-[:VIEWED]-(other_user:User)-[:VIEWED]->(other_page:Page) " +
             "WHERE user <> other_user " +
-            "AND NOT EXISTS ( ( {id: $0}) -[:VIEWED]->(other_page:page_url) ) " +
-            "AND other_page.id <> \"https://woolford.io/\" " +
-            "AND NOT other_page.id STARTS WITH \"https://woolford.io/tags/\" " +
-            "WITH other_page.id AS page_url, COUNT(other_user) AS frequency " +
+            "AND other_page.page_url <> \"https://woolford.io/\" " +
+            "AND NOT other_page.page_url STARTS WITH \"https://woolford.io/tags/\" " +
+            "WITH other_page AS page_url, COUNT(other_user) AS frequency " +
             "ORDER BY frequency DESC " +
-            "RETURN page_url")
-    List<PageUrl> getRecommendations(@Param("network_userid") String network_userid);
+            "RETURN page_url " +
+            "LIMIT 3")
+    List<Page> getRecommendations(@Param("network_userid") String network_userid);
 
 }
