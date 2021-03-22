@@ -1,6 +1,6 @@
 # snowplow-neo4j-recommender
 
-![graph-recommender](img/graph-recommender.png)
+![user-page-graph](img/user-page-graph.svg)
 
 The graph is built, dynamically, using the Neo4j connector:
 
