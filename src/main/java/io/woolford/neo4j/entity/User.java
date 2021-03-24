@@ -2,6 +2,8 @@ package io.woolford.neo4j.entity;
 
 import org.springframework.data.neo4j.core.schema.*;
 
+import java.util.List;
+
 @Node("User")
 public class User {
 
@@ -11,6 +13,9 @@ public class User {
 
     @Property("network_userid")
     private String networkUserid;
+
+    @Relationship(type="VIEWED", direction = Relationship.Direction.OUTGOING)
+    private List<Page> pageViews;
 
     public Long getId() {
         return id;

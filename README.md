@@ -44,6 +44,22 @@ The REST service returns a list of page recommendations for a `network_userid` (
 
 It's also possible to retrieve a list of views for each `network_userid`, e.g.
 
-    MATCH(n:User {network_userid: "88bd67c1-66ce-4cc6-82a2-9e128017f379"})-[r:VIEWED]->(p:Page)
-    RETURN p.page_url AS page_url, r.derived_tstamp AS derived_tstamp
-    ORDER BY r.derived_tstamp
+    http localhost:8081/history/f886f517-2dce-408d-8709-d230ff2e755b
+    [
+      {
+        "derivedTstamp": "2021-03-08T18:57:25.342Z",
+        "pageUrl": "https://woolford.io/2020-11-20-vehicle-telemetry/"
+      },
+      {
+        "derivedTstamp": "2021-03-08T18:57:38.738Z",
+        "pageUrl": "https://woolford.io/2020-07-11-streaming-joins/"
+      },
+      {
+        "derivedTstamp": "2021-03-08T18:57:52.137Z",
+        "pageUrl": "https://woolford.io/2019-12-11-zeek-neo4j/"
+      },
+      {
+        "derivedTstamp": "2021-03-08T18:58:14.315Z",
+        "pageUrl": "https://woolford.io/2018-02-11-cowrie/"
+      }
+    ]

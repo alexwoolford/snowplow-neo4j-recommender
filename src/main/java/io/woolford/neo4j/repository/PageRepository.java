@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecommendationsRepository extends Neo4jRepository<Page, Long> {
+public interface PageRepository extends Neo4jRepository<Page, Long> {
 
     @Query( "MATCH (user:User {network_userid: $network_userid})-[:VIEWED]->(page:Page)<-[:VIEWED]-(other_user:User)-[:VIEWED]->(other_page:Page) " +
             "WHERE user <> other_user " +
