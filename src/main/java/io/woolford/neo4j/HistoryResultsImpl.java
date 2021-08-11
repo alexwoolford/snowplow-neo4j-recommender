@@ -19,17 +19,17 @@ public class HistoryResultsImpl implements HistoryResults {
     }
 
     @Override
-    public Collection<Result> getHistory(String networkUserid) {
+    public Collection<Result> getHistory(String domainUserid) {
         return neo4jClient
-                .query("MATCH(n:User {network_userid: $network_userid})-[r:VIEWED]->(p:Page) " +
-                        "RETURN p.page_url AS page_url, r.derived_tstamp AS derived_tstamp " +
-                        "ORDER BY r.derived_tstamp"
+                .query("MATCH(n:User {domain_userid: $domain_userid})-[r:VIEWED]->(p:Page) " +
+                        "RETURN p.page_url AS page_url, r.timestamp AS timestamp " +
+                        "ORDER BY timestamp"
                 )
                 .in(database)
-                .bind(networkUserid).to("network_userid")
+                .bind(domainUserid).to("domain_userid")
                 .fetchAs(Result.class)
                 .mappedBy((typeSystem, record) -> new Result(record.get("page_url").asString(),
-                        record.get("derived_tstamp").asZonedDateTime()))
+                        record.get("timestamp").asLong()))
                 .all();
     }
 }

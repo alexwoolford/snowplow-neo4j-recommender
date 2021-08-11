@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
+
 @SpringBootApplication(scanBasePackages = "io.woolford.neo4j")
 @EnableNeo4jRepositories(basePackages = "io.woolford.neo4j")
 public class Application {

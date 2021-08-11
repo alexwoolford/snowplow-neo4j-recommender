@@ -24,20 +24,20 @@ public class RecommendationsController {
         this.historyResults = historyResults;
     }
 
-    @GetMapping("/recommendations/{network_userid}")
-    public ResponseEntity<List<Page>> getRecommendations(@PathVariable String network_userid) {
+    @GetMapping("/recommendations/{domain_userid}")
+    public ResponseEntity<List<Page>> getRecommendations(@PathVariable String domain_userid) {
 
-        LOG.info("retrieving recommendations for network_userid: " + network_userid);
+        LOG.info("retrieving recommendations for domain_userid: " + domain_userid);
 
-        return ResponseEntity.ok(pageRepository.getRecommendations(network_userid));
+        return ResponseEntity.ok(pageRepository.getRecommendations(domain_userid));
     }
 
-    @GetMapping("/history/{network_userid}")
-    public ResponseEntity<Collection<HistoryResults.Result>> getHistory(@PathVariable String network_userid) {
+    @GetMapping("/history/{domain_userid}")
+    public ResponseEntity<Collection<HistoryResults.Result>> getHistory(@PathVariable String domain_userid) {
 
-        LOG.info("retrieving history for network_userid: " + network_userid);
+        LOG.info("retrieving history for domain_userid: " + domain_userid);
 
-        return ResponseEntity.ok(historyResults.getHistory(network_userid));
+        return ResponseEntity.ok(historyResults.getHistory(domain_userid));
     }
 
 }

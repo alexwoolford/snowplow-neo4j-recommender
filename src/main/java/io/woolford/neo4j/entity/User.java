@@ -11,8 +11,8 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @Property("network_userid")
-    private String networkUserid;
+    @Property("domain_userid")
+    private String domainUserid;
 
     @Relationship(type="VIEWED", direction = Relationship.Direction.OUTGOING)
     private List<Page> pageViews;
@@ -25,12 +25,12 @@ public class User {
         this.id = id;
     }
 
-    public String getNetworkUserid() {
-        return networkUserid;
+    public String getDomainUserid() {
+        return domainUserid;
     }
 
-    public void setNetworkUserid(String networkUserid) {
-        this.networkUserid = networkUserid;
+    public void setDomainUserid(String domainUserid) {
+        this.domainUserid = domainUserid;
     }
 
 }

@@ -3,7 +3,6 @@ package io.woolford.neo4j;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.ZonedDateTime;
 import java.util.Collection;
 
 public interface HistoryResults {
@@ -13,17 +12,16 @@ public interface HistoryResults {
         @Property("page_url")
         public final String pageUrl;
 
-        @Property("derived_tstamp")
-        public final ZonedDateTime derivedTstamp;
+        public final Long timestamp;
 
-        Result(String pageUrl, ZonedDateTime derivedTstamp) {
+        Result(String pageUrl, Long derivedTstamp) {
             this.pageUrl = pageUrl;
-            this.derivedTstamp = derivedTstamp;
+            this.timestamp = derivedTstamp;
         }
 
     }
 
     @Transactional(readOnly = true)
-    Collection<Result> getHistory(String networkUserid);
+    Collection<Result> getHistory(String domainUserid);
 
 }

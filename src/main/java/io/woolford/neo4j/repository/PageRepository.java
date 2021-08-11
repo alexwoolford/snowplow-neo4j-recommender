@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PageRepository extends Neo4jRepository<Page, Long> {
 
-    @Query( "MATCH (user:User {network_userid: $network_userid})-[:VIEWED]->(page:Page)<-[:VIEWED]-(other_user:User)-[:VIEWED]->(other_page:Page) " +
+    @Query( "MATCH (user:User {domain_userid: $domain_userid})-[:VIEWED]->(page:Page)<-[:VIEWED]-(other_user:User)-[:VIEWED]->(other_page:Page) " +
             "WHERE user <> other_user " +
             "AND other_page.page_url <> \"https://woolford.io/\" " +
             "AND NOT other_page.page_url STARTS WITH \"https://woolford.io/tags/\" " +
@@ -19,6 +19,6 @@ public interface PageRepository extends Neo4jRepository<Page, Long> {
             "ORDER BY frequency DESC " +
             "RETURN page_url " +
             "LIMIT 3")
-    List<Page> getRecommendations(@Param("network_userid") String network_userid);
+    List<Page> getRecommendations(@Param("domain_userid") String domain_userid);
 
 }
