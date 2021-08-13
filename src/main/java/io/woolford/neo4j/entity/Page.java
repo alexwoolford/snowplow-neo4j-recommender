@@ -14,6 +14,9 @@ public class Page {
     @Property("page_url")
     private String pageUrl;
 
+    @Property("page_title")
+    private String pageTitle;
+
     @Relationship(type="VIEWED", direction = Relationship.Direction.INCOMING)
     private List<User> pageViews;
 
@@ -31,6 +34,14 @@ public class Page {
 
     public void setPageUrl(String pageUrl) {
         this.pageUrl = pageUrl;
+    }
+
+    public String getPageTitle() {
+        return pageTitle;
+    }
+
+    public void setPageTitle(String pageTitle) {
+        this.pageTitle = pageTitle;
     }
 
 }

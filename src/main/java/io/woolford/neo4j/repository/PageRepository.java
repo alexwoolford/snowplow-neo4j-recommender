@@ -15,9 +15,9 @@ public interface PageRepository extends Neo4jRepository<Page, Long> {
             "WHERE user <> other_user " +
             "AND other_page.page_url <> \"https://woolford.io/\" " +
             "AND NOT other_page.page_url STARTS WITH \"https://woolford.io/tags/\" " +
-            "WITH other_page AS page_url, COUNT(other_user) AS frequency " +
+            "WITH other_page, COUNT(other_user) AS frequency " +
             "ORDER BY frequency DESC " +
-            "RETURN page_url " +
+            "RETURN other_page " +
             "LIMIT 3")
     List<Page> getRecommendations(@Param("domain_userid") String domain_userid);
 

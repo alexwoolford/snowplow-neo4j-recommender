@@ -30,14 +30,17 @@ The REST service returns a list of page recommendations for a `domain_userid` (w
     [
         {
             "id": 4,
+            "pageTitle": "Zeek, Kafka, and Neo4j",
             "pageUrl": "https://woolford.io/2019-12-11-zeek-neo4j/"
         },
         {
             "id": 1,
+            "pageTitle": "streaming joins in ksqlDB",
             "pageUrl": "https://woolford.io/2020-07-11-streaming-joins/"
         },
         {
             "id": 5,
+            "pageTitle": "a $10 pot of honey",
             "pageUrl": "https://woolford.io/2018-02-11-cowrie/"
         }
     ]
