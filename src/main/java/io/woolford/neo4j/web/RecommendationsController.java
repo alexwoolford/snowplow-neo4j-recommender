@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.List;
 
+@CrossOrigin(origins = "https://woolford.io", maxAge = 3600)
 @RestController
 public class RecommendationsController {
 

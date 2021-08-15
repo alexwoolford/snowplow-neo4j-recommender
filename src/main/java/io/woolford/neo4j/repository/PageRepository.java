@@ -13,8 +13,7 @@ public interface PageRepository extends Neo4jRepository<Page, Long> {
 
     @Query( "MATCH (user:User {domain_userid: $domain_userid})-[:VIEWED]->(page:Page)<-[:VIEWED]-(other_user:User)-[:VIEWED]->(other_page:Page) " +
             "WHERE user <> other_user " +
-            "AND other_page.page_url <> \"https://woolford.io/\" " +
-            "AND NOT other_page.page_url STARTS WITH \"https://woolford.io/tags/\" " +
+            "AND other_page.is_post = true " +
             "WITH other_page, COUNT(other_user) AS frequency " +
             "ORDER BY frequency DESC " +
             "RETURN other_page " +
