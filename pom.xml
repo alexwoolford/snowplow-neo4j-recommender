@@ -6,12 +6,12 @@
 
     <groupId>io.woolford</groupId>
     <artifactId>snowplow-neo4j-recommender</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.3</version>
+        <version>2.6.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -45,7 +45,7 @@
                 <configuration>
                     <executable>true</executable>
                     <image>
-                        <name>docker.io/alexwoolford/${project.artifactId}:1.0.0</name>
+                        <name>docker.io/alexwoolford/${project.artifactId}:${project.version}</name>
                     </image>
                 </configuration>
             </plugin>

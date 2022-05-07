@@ -1,7 +1,7 @@
 package io.woolford.neo4j.web;
 
-import io.woolford.neo4j.HistoryResults;
-import io.woolford.neo4j.HistoryResultsImpl;
+import io.woolford.neo4j.NextCountResults;
+import io.woolford.neo4j.NextCountResultsImpl;
 import io.woolford.neo4j.entity.Page;
 import io.woolford.neo4j.repository.PageRepository;
 import org.slf4j.Logger;
@@ -18,11 +18,12 @@ public class RecommendationsController {
     private final Logger LOG = LoggerFactory.getLogger(RecommendationsController.class);
 
     private final PageRepository pageRepository;
-    private final HistoryResultsImpl historyResults;
 
-    public RecommendationsController(PageRepository pageRepository, HistoryResultsImpl historyResults) {
+    private final NextCountResultsImpl nextCountResults;
+
+    public RecommendationsController(PageRepository pageRepository, NextCountResultsImpl nextCountResults) {
         this.pageRepository = pageRepository;
-        this.historyResults = historyResults;
+        this.nextCountResults = nextCountResults;
     }
 
     @GetMapping("/recommendations/{domain_userid}")
@@ -33,12 +34,12 @@ public class RecommendationsController {
         return ResponseEntity.ok(pageRepository.getRecommendations(domain_userid));
     }
 
-    @GetMapping("/history/{domain_userid}")
-    public ResponseEntity<Collection<HistoryResults.Result>> getHistory(@PathVariable String domain_userid) {
+    @GetMapping("/next")
+    public ResponseEntity<Collection<NextCountResults.Result>> getNext(@RequestParam String url) {
 
-        LOG.info("retrieving history for domain_userid: " + domain_userid);
+        LOG.info("getting next pages for url: " + url);
 
-        return ResponseEntity.ok(historyResults.getHistory(domain_userid));
+        return ResponseEntity.ok(nextCountResults.getNextCount(url));
     }
 
 }

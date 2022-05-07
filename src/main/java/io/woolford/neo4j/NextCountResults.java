@@ -5,23 +5,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
-public interface HistoryResults {
+public interface NextCountResults {
 
     class Result {
 
         @Property("page_url")
         public final String pageUrl;
 
-        public final Long timestamp;
+        public final Long count;
 
-        Result(String pageUrl, Long derivedTstamp) {
+        Result(String pageUrl, Long count) {
             this.pageUrl = pageUrl;
-            this.timestamp = derivedTstamp;
+            this.count = count;
         }
 
     }
 
     @Transactional(readOnly = true)
-    Collection<Result> getHistory(String domainUserid);
+    Collection<Result> getNextCount(String pageUrl);
 
 }
